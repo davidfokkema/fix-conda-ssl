@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "fix-conda-ssl"
 version = "0.1.0"
-description = "Fix CondaSSLError on Windows by copying DDLs"
+description = "Fix Conda SSLError on Windows by copying DDLs"
 authors = ["David Fokkema <davidfokkema@icloud.com>"]
 readme = "README.md"
 packages = [{ include = "fix_conda_ssl", from = "src" }]
