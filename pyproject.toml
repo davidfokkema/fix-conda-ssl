@@ -10,9 +10,11 @@ packages = [{ include = "fix_conda_ssl", from = "src" }]
 python = "^3.9"
 textual = "^0.41.0"
 
-
 [tool.poetry.group.dev.dependencies]
 textual-dev = "^1.2.1"
+
+[tool.poetry.scripts]
+fixconda = "fix_conda_ssl.app:main"
 
 [build-system]
 requires = ["poetry-core"]
