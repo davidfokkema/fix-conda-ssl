@@ -5,8 +5,13 @@
 
 #listview_header {
     padding: 1 2;
+    width: 100%;
     text-align: center;
     text-style: bold;
+}
+
+ListView {
+    height: auto;
 }
 
 CondaEnvironment {
