@@ -1,0 +1,10 @@
+#info_msg {
+    padding: 1 2;
+    text-style: italic;
+}
+
+#listview_header {
+    padding: 1 2;
+    text-align: center;
+    text-style: bold;
+}
