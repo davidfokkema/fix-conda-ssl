@@ -34,3 +34,18 @@ CondaEnvironment > Static {
 .error #error {
     display: block;
 }
+
+ErrorDialog {
+    align: center middle;
+}
+ErrorDialog > Vertical {
+    width: 70%;
+    height: auto;
+    border: solid $warning;
+    border-title-align: center;
+    background: $panel;
+}
+
+ErrorDialog #msg {
+    padding: 1 2;
+}
