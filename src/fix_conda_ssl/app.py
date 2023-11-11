@@ -1,8 +1,10 @@
 import asyncio
+import platform
 import shutil
 import subprocess
 from pathlib import Path
 
+import rich
 from textual import on, work
 from textual.app import App, ComposeResult
 from textual.containers import Center, Vertical
@@ -46,6 +48,12 @@ class CondaEnvironment(ListItem):
 class FixCondaSSLApp(App[None]):
     BINDINGS = [("q", "quit()", "Quit")]
     CSS_PATH = "app.tcss"
+
+    def __init__(self) -> None:
+        super().__init__()
+        if platform.system() != "Windows":
+            rich.print("[red]This application is only useful on Windows.[/]")
+            self.exit()
 
     def compose(self) -> ComposeResult:
         yield Header()
