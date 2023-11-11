@@ -1,3 +1,6 @@
+import asyncio
+
+from textual import work
 from textual.app import App, ComposeResult
 from textual.widgets import Footer, Header, ListItem, ListView, Static
 
@@ -18,6 +21,15 @@ class FixCondaSSLApp(App[None]):
     def on_mount(self) -> None:
         list_view = self.query_one(ListView)
         list_view.loading = True
+        self.load_conda_environments()
+
+    @work
+    async def load_conda_environments(self) -> None:
+        await asyncio.sleep(3)
+        list_view = self.query_one(ListView)
+        for x in range(5):
+            await list_view.append(ListItem(Static(f"Environment {x}")))
+        list_view.loading = False
 
 
 app = FixCondaSSLApp
