@@ -5,6 +5,12 @@ description = ""
 authors = ["David Fokkema <davidfokkema@icloud.com>"]
 readme = "README.md"
 packages = [{ include = "fix_conda_ssl", from = "src" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Operating System :: Microsoft :: Windows",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
