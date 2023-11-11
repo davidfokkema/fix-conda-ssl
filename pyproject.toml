@@ -4,11 +4,15 @@ version = "0.1.0"
 description = ""
 authors = ["David Fokkema <davidfokkema@icloud.com>"]
 readme = "README.md"
-packages = [{include = "fix_conda_ssl", from = "src"}]
+packages = [{ include = "fix_conda_ssl", from = "src" }]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
+textual = "^0.41.0"
 
+
+[tool.poetry.group.dev.dependencies]
+textual-dev = "^1.2.1"
 
 [build-system]
 requires = ["poetry-core"]
