@@ -1,5 +1,7 @@
 import asyncio
+import shutil
 import subprocess
+from pathlib import Path
 
 from textual import on, work
 from textual.app import App, ComposeResult
@@ -59,11 +61,25 @@ class FixCondaSSLApp(App[None]):
 
     @on(ListView.Selected)
     def fix_environment(self, event: ListView.Selected) -> None:
-        try:
-            1 / 0
-        except Exception as exc:
-            self.app.push_screen(ErrorDialog(exc))
-            event.item.add_class("error")
+        """Copy SSL libraries to DLLs folder."""
+        env: CondaEnvironment = event.item
+        src_dir = Path(env.path) / "Library" / "bin"
+        dst_dir = Path(env.path) / "DLLs"
+        files = list(src_dir.glob("libcrypto*.dll")) + list(src_dir.glob("libssl*.dll"))
+        if not files:
+            self.app.push_screen(
+                ErrorDialog(RuntimeError("SSL libraries could not be located."))
+            )
+            env.add_class("error")
+        else:
+            try:
+                for path in files:
+                    shutil.copy(path, dst_dir)
+            except Exception as exc:
+                self.app.push_screen(ErrorDialog(exc))
+                env.add_class("error")
+            else:
+                env.add_class("fixed")
 
     @work
     async def load_conda_environments(self) -> None:
