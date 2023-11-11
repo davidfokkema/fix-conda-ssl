@@ -16,9 +16,8 @@ class CondaEnvironment(ListItem):
 
     def compose(self) -> ComposeResult:
         yield Static(self.env_name, id="env_name")
-        yield Static("Fixing...", classes="busy")
-        yield Static("Fixed!", classes="fixed")
-        yield Static("Error", classes="error")
+        yield Static("[bold green]Fixed[/]", id="fixed")
+        yield Static("[bold red]Error", id="error")
 
 
 class FixCondaSSLApp(App[None]):

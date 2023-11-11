@@ -22,3 +22,15 @@ CondaEnvironment > Static {
     padding: 1 2;
     width: auto;
 }
+
+#fixed, #error{
+    display: none;
+}
+
+.fixed #fixed {
+    display: block;
+}
+
+.error #error {
+    display: block;
+}
