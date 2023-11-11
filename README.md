@@ -1,10 +1,14 @@
 # fix-conda-ssl
 
-## Introduction
+Fix the dreaded Conda SSLError on Windows by copying DDLs. This is not about validating certificates behind a corporate firewall but about Python not being able to `import ssl` inside conda environments.
 
-Fix Conda SSLError on Windows by copying DDLs.
 
-Every once in a while, the planets are out of alignment and conda on Windows is broken again. Sometimes it is only the conda-forge channel for the newest version of Python, sometimes it is (much) worse. Reinstalling the latest version of Anaconda is, unfortunately, not a quick solution for my lab full of university-managed Windows PCs without administrator access. After noticing on a Friday late-afternoon that SSL was broken again and you could not only not install packages into a conda environment but also not run pipx-installed applications like Poetry inside of an environment, I needed a student-friendly solution to the problem. After all, when my students come in after the weekend I don't want to send them home because of broken machines.
+## The Problem
+
+Every once in a while, the planets are out of alignment and conda on Windows is broken again. Sometimes it is only the conda-forge channel for the newest version of Python, sometimes it is (much) worse. Reinstalling the latest version of Anaconda is, unfortunately, not a quick solution for my lab full of university-managed Windows PCs without administrator access. After noticing on a Friday late-afternoon that SSL was broken again and you could not only not install packages into a conda environment but also not run pipx-installed applications like Poetry inside of an environment, I needed a student-friendly solution to the problem. After all, when my students come in after the weekend I don't want to send them home because of broken machines. So, I sat down to write this tool.
+
+
+## The solution
 
 Many reports can be found detailing the problem starting years ago. The solution seems to be pretty straight-forward, although it can be a bit cumbersome to perform. Basically, you just need to copy libcrypo-something.dll and libssl-something.dll from the environments Library/bin folder to its DLLs folder. So, enter `fixconda`.
 
