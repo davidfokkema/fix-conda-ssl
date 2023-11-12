@@ -17,11 +17,13 @@ Many reports can be found detailing the problem starting years ago. The solution
 
 ## Installation and usage
 
+You probably won't be able to install this package inside broken environments. Usually, the base environment works well so be sure to activate the base environment before performing these steps.
+
 It is best to install using pipx to keep this application out of your base conda environment:
 ```
 > pipx install fix-conda-ssl
 ```
-If needed, you can also install using pip:
+If needed, you can also install using pip but won't be able to fix the environment fix-conda-ssl is installed to:
 ```
 > pip install fix-conda-ssl
 ```
