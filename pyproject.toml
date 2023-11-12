@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fix-conda-ssl"
-version = "0.2.0"
+version = "0.3.0"
 description = "Fix Conda SSLError on Windows by copying DDLs"
 authors = ["David Fokkema <davidfokkema@icloud.com>"]
 readme = "README.md"
