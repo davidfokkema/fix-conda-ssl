@@ -12,7 +12,7 @@ Every once in a while, the planets are out of alignment and conda on Windows is 
 
 Many reports can be found detailing the problem starting years ago. The solution seems to be pretty straight-forward, although it can be a bit cumbersome to perform. Basically, you just need to copy libcrypo-something.dll and libssl-something.dll from the environments Library/bin folder to its DLLs folder. So, enter `fixconda`.
 
-![Screenshot of the terminal user interface](fixcondasslapp_screenshot.svg)
+![Screenshot of the terminal user interface](https://raw.githubusercontent.com/davidfokkema/fix-conda-ssl/main/fixcondasslapp_screenshot.svg?token=GHSAT0AAAAAACBVTVLA74NKBKW642F7P5QCZKQZAKQ)
 
 
 ## Installation and usage
