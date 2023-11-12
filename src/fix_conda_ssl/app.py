@@ -46,7 +46,10 @@ class CondaEnvironment(ListItem):
 
 
 class FixCondaSSLApp(App[None]):
-    BINDINGS = [("q", "quit()", "Quit")]
+    BINDINGS = [
+        ("q", "quit()", "Quit"),
+        ("ctrl+s", "save_screenshot()", None),
+    ]
     CSS_PATH = "app.tcss"
 
     def __init__(self) -> None:
@@ -105,6 +108,10 @@ class FixCondaSSLApp(App[None]):
             if len(fields) >= 2:
                 env, *_, path = fields
                 await list_view.append(CondaEnvironment(f"{env}", path))
+
+    def action_save_screenshot(self) -> None:
+        path = self.save_screenshot()
+        self.notify(f"Screen saved to {path}")
 
 
 app = FixCondaSSLApp
