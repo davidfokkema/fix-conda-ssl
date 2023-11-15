@@ -70,6 +70,11 @@ class FixCondaSSLApp(App[None]):
         list_view.loading = True
         self.load_conda_environments()
 
+    @on(ListView.Highlighted)
+    def keep_in_focus(self, event: ListView.Highlighted) -> None:
+        if event.item:
+            self.screen.scroll_to_widget(event.item)
+
     @on(ListView.Selected)
     def fix_environment(self, event: ListView.Selected) -> None:
         """Copy SSL libraries to DLLs folder."""
@@ -94,7 +99,7 @@ class FixCondaSSLApp(App[None]):
 
     @work
     async def load_conda_environments(self) -> None:
-        list_view = self.query_one(ListView)
+        list_view: ListView = self.query_one(ListView)
 
         process = await asyncio.create_subprocess_shell(
             "conda env list", stdout=subprocess.PIPE
@@ -108,6 +113,8 @@ class FixCondaSSLApp(App[None]):
             if len(fields) >= 2:
                 env, *_, path = fields
                 await list_view.append(CondaEnvironment(f"{env}", path))
+        # highlight the first item
+        list_view.action_cursor_down()
 
     def action_save_screenshot(self) -> None:
         path = self.save_screenshot()
